@@ -14,7 +14,6 @@
     --hover-color: #b3cba8;
     --navy-shadow: rgba(2, 12, 27, 0.721);
     --code-background: #1e1e1e;
-    --code-white: white;
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
     --font-mono: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
     --fz-xxs: 12px;
@@ -418,7 +417,7 @@ ul {
 
 /* colors for code section */
 .code-block {
-    background-color: var(--code-background);
+    background-color: var(--matcha-grey);
     border-radius: 10px;
     border-top: 27.5px solid var(--light-grey);
     box-shadow: var(--navy-box-shadow);
@@ -439,7 +438,7 @@ ul {
 }
 
 .code-white {
-    color: var(--code-white);
+    color: var(--secondary);
 }
 
 /* css styling for the weekly assignments section */
