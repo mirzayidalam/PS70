@@ -472,8 +472,8 @@ ul {
     color: var(--code-white);
 }
 
-/* css styling for the education section */
-#education {
+/* css styling for the weekly assignments section */
+#weekly {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -552,8 +552,8 @@ ul {
     padding: 5px;
 }
 
-/* css styling for the experience section */
-#experience {
+/* css styling for the final project section */
+#final {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -579,7 +579,7 @@ ul {
     color: var(--tertiary);
 }
 
-#work-experience {
+#projectDetails {
     border-radius: 10px;
     box-shadow: var(--navy-box-shadow);
     height: 60vh;
@@ -588,11 +588,11 @@ ul {
     width: 70%;
 }
 
-#work-experience h3 {
+#projectDetails h3 {
     font-weight: 650;
 }
 
-#work-experience a {
+#projectDetails a {
     border-radius: 5px;
     box-shadow: inset 0 0 0 0 var(--light-green);
     display: inline-block;
@@ -602,103 +602,16 @@ ul {
     transition: color .5s ease-in-out, box-shadow .5s ease-in-out;
 }
 
-#work-experience a:hover {
+#projectDetails a:hover {
   box-shadow: inset 200px 0 0 0 var(--light-green);
   color: var(--dark-green);
 }
 
-#work-experience ul li {
+#projectDetails ul li {
     font-size: var(--fz-xs);
 }
 
-/* css styling for the experience section */
-#projects {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 7.5% 15%;
-}
 
-#project-content ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.project-card {
-    border-radius: 15px;
-    box-shadow: 1px 2.5px 8px -2.5px var(--faded-grey);
-    height: 250px;
-    padding: 25px;
-    position: relative;
-    transition: .5s;
-    width: 215px;
-}
-
-.project-card:hover {
-    background-color: var(--light-green);
-}
-
-#project-content ul li {
-    height: 300px;
-    padding: 25px;
-}
-
-#project-content ul li:hover {
-    padding-top: 15px;
-    padding-bottom: 35px;
-}
-
-.project-card-header {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    height: 20%;
-    justify-content: space-between;
-    margin: 0;
-    width: 100%;
-}
-
-.project-card-header svg {
-    color: var(--tertiary);
-    margin: 0;
-    width: 30px;
-}
-
-.external-links svg {
-    color: var(--quaternary);
-    margin: 2.5px;
-    height: 15px;
-    width: 15px;
-    z-index: 2;
-}
-
-.external-links svg:hover {
-    color: var(--dark-green);
-}
-
-.project-card-title {
-    color: var(--secondary);
-    font-size: var(--fz-lg);
-    font-weight: 700;
-    margin: 5px 0;
-}
-
-.project-card-description {
-    color: var(--quaternary);
-    font-size: var(--fz-xs);
-    margin: 10px 0;
-}
-
-.project-card-footer {
-    bottom: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 15px 0 30px 0;
-    overflow: visible;
-    position: absolute;
-}
 
 /* css styling for smaller screens */
 @media only screen and (max-width: 600px) {
