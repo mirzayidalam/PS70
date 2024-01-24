@@ -1,0 +1,441 @@
+<html>
+<head>
+    <title>Teresa's Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/customComponents.js"></script>
+</head>
+
+<body>
+    <div id="navbar">
+        <nav>
+            <a class="secondary-colored" href="#about"><span class="primary-colored">01. </span>About</a>
+            <a class="secondary-colored" href="#education"><span class="primary-colored">02. </span>Education</a>
+            <a class="secondary-colored" href="#experience"><span class="primary-colored">03. </span>Experience</a>
+            <a class="secondary-colored" href="#projects"><span class="primary-colored">04. </span>Projects</a>
+        </nav>
+    </div>
+    <div id="contact" orientation="right">
+        <ul>
+            <li>
+                <a href="mailto:teresaliang2003@gmail.com">
+                    <i class="contact-icon material-icons">mail</i>
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://teresa-liang.github.io/assets/resume_Teresa_Liang.pdf">
+                    <i class=" contact-icon material-icons">description</i>
+                </a>
+            </li>
+            <li><a target="_blank" href="https://github.com/teresa-liang"><svg class="contact-icon"
+                        xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-github">
+                        <title>GitHub</title>
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg></a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/in/teresahliang/"><svg class="contact-icon"
+                        xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-linkedin">
+                        <title>LinkedIn</title>
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg></a></li>
+        </ul>
+    </div>
+    <div class="section">
+        <div id="intro">
+            <div>
+                <h1 id="intro-line" class="primary-colored">Hello, my name is</h1>
+            </div>
+            <div>
+                <h2 id="name">Teresa Liang.</h2>
+            </div>
+            <div>
+                <p id="description">I am a third-year undergraduate student looking for software engineering
+                    positions.
+                    I have great interest in front-end development,
+                    back-end development, biotechnology, artificial intelligence, machine learning, and anything in between.
+                </p>
+            </div>
+            <div>
+                <a href="mailto:teresaliang2003@gmail.com"><button type="button" class="primary-button" id="email-btn">
+                        <span><i class="material-icons" style="margin-right: 7.5px;">mail</i></span>Say hi!</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div id="about">
+            <h2><span class="primary-colored">01. </span><span class="secondary-colored">About</span></h2>
+            <div class="section-content">
+                <div class="code-block">
+                    <span class="code-blue">class </span>
+                    <span class="code-green">Me<span class="code-white">:</span></span>
+                    <br>
+                    <div style="margin-left: 2em;">
+                        <span class="code-blue">def </span>
+                        <span class="code-yellow">__init__<span class="code-yellow-orange">( </span></span>
+                        <span class="code-light-blue">self </span>
+                        <span class="code-yellow-orange">)<span class="code-white">:</span></span>
+                    </div>
+                    <div style="margin-left: 4em;">
+                        <span class="code-light-blue">self.full_name </span>
+                        <span class="code-white">= </span>
+                        <span class="code-orange">'Teresa Liang'</span>
+                        <br>
+                        <span class="code-light-blue">self.hometown </span>
+                        <span class="code-white">= </span>
+                        <span class="code-orange">'Petaluma, CA'</span>
+                        <br>
+                        <span class="code-light-blue">self.school </span>
+                        <span class="code-white">= </span>
+                        <span class="code-orange">'UC Irvine'</span>
+                        <br>
+                        <span class="code-light-blue">self.expected_graduation</span>
+                        <span class="code-white">= </span>
+                        <span class="code-orange">'June 2024'</span>
+                        <br>
+                        <span class="code-light-blue">self.major </span>
+                        <span class="code-white">= </span>
+                        <span class="code-orange">'Computer Science, B.S.'</span>
+                        <br>
+                        <span class="code-light-blue">self.minor </span>
+                        <span class="code-white">= </span>
+                        <span class="code-orange">'Statistics'</span>
+                        <br>
+                        <span class="code-light-blue">self.resume </span>
+                        <span class="code-white">= </span>
+                        <span class="code-yellow">resume<span class="code-yellow-orange">(</span></span>
+                        <span class="code-orange">"<a class="code-orange" style="text-decoration: underline;"
+                                target="_blank"
+                                href="https://teresa-liang.github.io/assets/resume_Teresa_Liang.pdf">pdf</a>"</span>
+                        <span class="code-yellow-orange">)</span>
+                        <br>
+                        <span class="code-light-blue">self.pronouns </span>
+                        <span class="code-white">= </span>
+                        <span class="code-yellow-orange">[ </span>
+                        <span class="code-orange">'she'<span class="code-white">, </span></span>
+                        <span class="code-orange">'her'<span class="code-white">, </span></span>
+                        <span class="code-orange">'hers'</span>
+                        <span class="code-yellow-orange">]</span>
+                        <br>
+                        <span class="code-light-blue">self.hobbies_and_interests</span>
+                        <span class="code-white">= </span>
+                        <span class="code-yellow-orange">[ </span>
+                        <span class="code-orange">'tennis'<span class="code-white">, </span></span>
+                        <span class="code-orange">'badminton'<span class="code-white">, </span></span>
+                        <span class="code-orange">'drawing'<span class="code-white">, </span></span>
+                        <span class="code-orange">'painting'<span class="code-white">, </span></span>
+                        <span class="code-orange">'crocheting'<span class="code-white">, </span></span>
+                        <span class="code-orange">'cooking'</span>
+                        <span class="code-yellow-orange">]</span>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://teresa-liang.github.io/assets/headshot.JPG" id="headshot">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div id="education">
+            <h2><span class="primary-colored">02. </span><span class="secondary-colored">Education</span></h2>
+            <div class="section-content">
+                <div id="uci-section">
+                    <h2 id="uci-name">University of California, Irvine</h2>
+                    <h3 class="quaternary-colored">B.S. - Computer Science</h3>
+                    <span class="secondary-colored">Expected Gradution: June 2024</span>
+                    <img src="assets\uci_anteater.png" id="uci-anteater">
+                </div>
+                <div id="courses">
+                    <div class="tab">
+                        <button class="tablinks active" onclick="openTab(event, 'uci', 'horizontal')">UCI</button>
+                        <button class="tablinks" onclick="openTab(event, 'ku', 'horizontal')">KU</button>
+                        <button class="tablinks" onclick="openTab(event, 'srjc', 'horizontal')">SRJC</button>
+                    </div>
+                    <div id="uci" class="tabcontent default-focus" style="display: block; opacity: 1; position: relative;">
+                        <h3 class="school-name">University of California, Irvine</h3>
+                            <h5 class="range">September 2021 - present</h5>
+                        <div>
+                            <h4>Relevant Coursework</h4>
+                        </div>
+                        <div class="detail-on-right">
+                            <div class="current-course">in progress*</div>
+                        </div>
+                        <ul>
+                            <course-item course-name="CS 125 - Next Generation Search Systems&lt;b>*&lt;/b>" current-status="true"></course-item>
+                            <course-item course-name="CS 175 - Project in AI&lt;b>*&lt;/b>" current-status="true"></course-item>
+                            <course-item course-name="CS 121 - Information Retrieval"></course-item>
+                            <course-item course-name="CS 141 - Concepts in Programming Languages I"></course-item>
+                            <course-item course-name="CS 143A - Principles of Operating Systems"></course-item>
+                            <course-item course-name="CS 122A - Introduction to Data Management"></course-item>
+                            <course-item course-name="CS 161 - Design & Analysis of Algorithms"></course-item>
+                            <course-item course-name="ICS 46 - Data Structure Implementation and Analysis"></course-item>
+                            <course-item course-name="CS 177 - Applications of Probability in CS"></course-item>
+                            <course-item course-name="CS 178 - Machine Learning and Data-Mining"></course-item>
+                            <course-item course-name="ICS 51 - Introduction to Computer Organization"></course-item>
+                            <course-item course-name="ICS 139W - Critical Writing on Information Technology"></course-item>
+                            <course-item course-name="IN4MATX 43 - Introduction to Software Engineering"></course-item>
+                            <course-item course-name="ICS 6N - Computational Linear Algebra"></course-item>
+                            <course-item course-name="ICS 6B - Boolean Algebra & Logic"></course-item>
+                            <course-item course-name="ICS 33 - Intermediate Programming"></course-item>
+                            <course-item course-name="ICS 32 - Programming with Software Libraries"></course-item>
+                            <course-item course-name="ICS 31 - Introduction to Programming"></course-item>
+                        </ul>
+                        <h4>Statistics</h4>
+                        <ul>
+                            <course-item course-name="STATS 111 - Statistical Methods for Data Analysis II&lt;b>*&lt;/b>" current-status="true"></course-item>
+                            <course-item course-name="STATS 110 - Statistical Methods for Data Analysis I"></course-item>
+                            <course-item course-name="STATS 120C - Introduction to Probability and Statistics III"></course-item>
+                            <course-item course-name="STATS 120B - Introduction to Probability and Statistics II"></course-item>
+                            <course-item course-name="STATS 120A - Introduction to Probability and Statistics I"></course-item>
+                            <course-item course-name="STATS 67 - Introduction to Probability and Statistics for Computer Science"></course-item>
+                        </ul>
+                        <h4>Other</h4>
+                        <ul>
+                            <course-item course-name="MATH 2D - Multivariable Calculus"></course-item>
+                        </ul>
+                    </div>
+                    <div id="ku" class="tabcontent">
+                        <h3 class="school-name">Korea University</h3>
+                        <h5 class="range">Summer 2022</h5>
+                        <div>
+                            <h4>Relevant Coursework</h4>
+                        </div>
+                        <ul>
+                            <course-item course-name="ISC 42100 - Introduction to Artificial Intelligence"></course-item>
+                        </ul>
+                        <h4>Other</h4>
+                        <ul>
+                            <course-item course-name="IKL 211G00 - Beginning Korean I"></course-item>
+                            <course-item course-name="ISC 141B00 - Introduction to Sociology"></course-item>
+                        </ul>
+                    </div>
+
+                    <div id="srjc" class="tabcontent">
+                        <h3 class="school-name">Santa Rosa Junior College</h3>
+                        <h5 class="range">June 2018 - June 2021</h5>
+                        <div>
+                            <h4>Relevant Coursework</h4>
+                        </div>
+                        <ul>
+                            <course-item course-name="CS 50C - Web Development III"></course-item>
+                            <course-item course-name="CS 50B - Web Development II"></course-item>
+                            <course-item course-name="CS 50A - Web Development I"></course-item>
+                            <course-item course-name="CS 10A - Introduction to Programming Concepts and Methodologies"></course-item>
+                            <course-item course-name="MATH 4 - Discrete Mathematics"></course-item>
+                        </ul>
+                        <h4>Statistics</h4>
+                        <ul>
+                            <course-item course-name="MATH 15 - Elementary Statistics"></course-item>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div id="experience">
+            <h2><span class="primary-colored">03. </span><span class="secondary-colored">Experience</span></h2>
+            <div class="section-content">
+                <div>
+                    <div id="skills">
+                        <h3 class="tertiary-colored">Skills</h3>
+                        <h4>Speaking Lanugages</h4>
+                        <div class="skills-list">
+                            <div class="language">English</div>
+                            <div class="language">Mandarin</div>
+                            <div class="language">Spanish</div>
+                        </div>
+                        <h4>Programming Languages</h4>
+                        <div class="skills-list">
+                            <div class="language">Python</div>
+                            <div class="language">C++</div>
+                            <div class="language">Javascript</div>
+                        </div>
+                        <h4>Web Languages/Frameworks</h4>
+                        <div class="skills-list">
+                            <div class="language">HTML</div>
+                            <div class="language">CSS</div>
+                            <div class="language">Flask</div>
+                            <div class="language">React Native</div>
+                        </div>
+                        <h4>Other</h4>
+                        <div class="skills-list">
+                            <div class="language">Git</div>
+                            <div class="language">SQL</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="work-experience">
+                    <div class="vertical-tab">
+                        <button class="verticaltablinks active"
+                            onclick="openTab(event, 'General-Motors', 'vertical')"
+                            style="border-top-left-radius: 10px;">General Motors</button>
+                        <button class="verticaltablinks"
+                            onclick="openTab(event, 'Micro-Vu', 'vertical')">Micro-Vu</button>
+                        <button class="verticaltablinks" 
+                            onclick="openTab(event, 'UC-Irvine', 'vertical')">UC Irvine</button>
+                    </div>
+                    <div id="General-Motors" class="verticaltabcontent default-focus" style="display: block; opacity: 1; position: relative;">
+                        <h3>Software Engineering Intern <a target="_blank" href="https://www.gm.com/" class="tertiary-colored">@ General Motors</a></h3>
+                        <h5 class="range">June 2023 - September 2023</h5>
+                        <ul>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Collaborated closely with the team to migrate the development workflow from Gerrit to GitHub using tools such as Jira, Jenkins, and Artifactory.
+                            </li>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Integrated comprehensive code testing and static analysis measures for GitHub, ensuring high-quality code submissions.
+                            </li>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Developed robust bash scripts to automate the release generation and delta packaging process, increasing the efficiency of managing and deploying GM’s software to end-users.
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="Micro-Vu" class="verticaltabcontent">
+                        <h3>Electronics Intern <a target="_blank" href="https://www.microvu.com/" class="tertiary-colored">@ Micro-Vu</a></h3>
+                        <h5 class="range">September 2020 - September 2022</h5>
+                        <ul>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Developed a React Native app and Flask API from scratch to help 20+ employees easily keep track of item
+                                inventory, search up item details, make item transfers, and get item pick lists for work orders, improving production rates.
+                            </li>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Created 4 Python Flask web applications that visualize manufacturing progress data.
+                            </li>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Migrated Visual FoxPro scripts into Python and automated the process of sending these reports as emails.
+                            </li>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Guided new interns on manufacturing, assembling, and testing various sub-components for precision measurement equipment.
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="UC-Irvine" class="verticaltabcontent">
+                        <h3>Projects Committee Member of <a target="_blank" href="https://studentcouncil.ics.uci.edu/" class="tertiary-colored">ICSSC</a></h3>
+                        <h5 class="range">November 2022 - Present</h5>
+                        <ul>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                <span>Used React to create new features <span><a class="important-link" target="_blank" href="https://antalmanac.com/">AntAlamanac</a></span>, a course exploration and scheduling tool for 46,000 UCI Anteaters, which includes course enrollment notifications, and past course enrollment graphs.</span>
+                            </li>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Collaborated with a team of 10 by conducting code reviews, suggesting feature enhancements, and contributing to weekly stand-up meetings.
+                            </li>
+                        </ul>
+                        <h3>Social Relations Coordinator of <a target="_blank" href="https://acm-uci.org/" class="tertiary-colored">ACM</a></h3>
+                        <h5 class="range">December 2022 - Present</h5>
+                        <ul>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Organized club social events to strengthen interpersonal relationships within the organization.
+                            </li>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Spearheaded targeted outreach efforts that successfully increased club membership.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="school-activities"></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div id="projects">
+            <h2><span class="primary-colored">04. </span><span class="secondary-colored">Projects</span></h2>
+            <div id="project-content">
+                <ul>
+                    <project-card
+                        website-link="https://teresa-liang.github.io/"
+                        github-link="https://github.com/teresa-liang/teresa-liang.github.io"
+                        project-name="Personal Website"
+                        project-description="Created a website from pure &lt;b>HTML/CSS&lt;/b> to showcase a little more about me!"
+                        languages="HTML,CSS,Javascript">
+                    </project-card>
+                    <project-card
+                        github-link="https://github.com/beepo34/petr-selectr"
+                        project-name="PetrSelectr"
+                        project-description="Collaborated with a partner to build a &lt;b>web application&lt;/b> that helps UCI
+                        students in the school of ICS plan their classes."
+                        languages="HTML,CSS,Javascript,GraphQL">
+                    </project-card>
+                    <project-card
+                        github-link="https://github.com/teresa-liang/memorvine"
+                        project-name="Memorvine"
+                        project-description="Developing a &lt;b>mobile app&lt;/b> that helps people memorize Bible verses."
+                        languages="Typescript,Javascript">
+                    </project-card>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle smooth scroll behavior when clicking links within <nav>
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth' // Add smooth scrolling behavior
+                    });
+                }
+            });
+        });
+
+        function openTab(evt, id, type) {
+            var i, tabcontent, tablinks, hgt;
+            if (type == "horizontal"){
+                tabcontent = document.getElementsByClassName("tabcontent");
+                tablinks = document.getElementsByClassName("tablinks");
+                hgt = "75%";
+            } else if (type == "vertical"){
+                tabcontent = document.getElementsByClassName("verticaltabcontent");
+                tablinks = document.getElementsByClassName("verticaltablinks");
+                hgt = "87.5%";
+            }
+
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.opacity = "0";
+                tabcontent[i].style.height = "0";
+                tabcontent[i].style.position = "absolute";
+                tabcontent[i].style.transform = "translateY(-3px)";
+            }
+
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            var selectedTab = document.getElementById(id);
+            selectedTab.style.height = hgt;
+            selectedTab.style.position = "relative";
+            selectedTab.style.opacity = "1";
+            selectedTab.style.transform = "translateY(0px)";
+            selectedTab.style.transition = "opacity 0.5s ease-in, transform 0.8s ease-in-out";
+            
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+
+</html>
