@@ -14,12 +14,6 @@
     --hover-color: #b3cba8;
     --navy-shadow: rgba(2, 12, 27, 0.721);
     --code-background: #1e1e1e;
-    --code-blue: #3489d3;
-    --code-light-blue: #80cfe1;
-    --code-green: #46b789;
-    --code-yellow: #d7cf85;
-    --code-yellow-orange: #ebb011;
-    --code-orange: #bd8058;
     --code-white: white;
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
     --font-mono: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
@@ -444,30 +438,6 @@ ul {
     padding: 0;
 }
 
-.code-blue {
-    color: var(--code-blue);
-}
-
-.code-light-blue {
-    color: var(--code-light-blue);
-}
-
-.code-green {
-    color: var(--code-green);
-}
-
-.code-yellow {
-    color: var(--code-yellow);
-}
-
-.code-yellow-orange {
-    color: var(--code-yellow-orange);
-}
-
-.code-orange {
-    color: var(--code-orange);
-}
-
 .code-white {
     color: var(--code-white);
 }
@@ -485,7 +455,7 @@ ul {
     margin: 0;
 }
 
-#weekTabs {
+#uci-section {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -499,7 +469,7 @@ ul {
     width: 250px;
 }
 
-#courses {
+#weekTabs {
     border-radius: 10px;
     box-shadow: var(--navy-box-shadow);
     height: 60vh;
