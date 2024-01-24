@@ -429,7 +429,7 @@ ul {
     max-height: 340px;
     overflow-y: auto;
     padding: 30px 50px;
-    width: 40%;
+    width: 60%;
 }
 
 .code-block span {
@@ -474,7 +474,7 @@ ul {
     height: 60vh;
     margin: 25px;
     max-height: 400px;
-    width: 70%;
+    width: 90%;
 }
 
 .current-course {
@@ -554,7 +554,7 @@ ul {
     height: 60vh;
     margin: 25px;
     max-height: 400px;
-    width: 70%;
+    width: 90%;
 }
 
 #projectDetails h3 {
