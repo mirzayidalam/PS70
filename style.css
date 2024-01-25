@@ -368,12 +368,6 @@ ul {
     margin-bottom: 45px;
 }
 
-#email-btn {
-    align-items: center; 
-    display: flex; 
-    justify-content:center;
-}
-
 /* The typing effect */
 @keyframes typing {
     from {
@@ -449,31 +443,12 @@ ul {
     padding: 7.5% 15%;
 }
 
-#uci-name {
-    color: var(--tertiary);
-    margin: 0;
-}
-
-#uci-section {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 50px;
-    text-align: center;
-}
-
-#uci-anteater {
-    transform: scaleX(-1);
-    width: 250px;
-}
-
 #weekTabs {
     border-radius: 10px;
     box-shadow: var(--navy-box-shadow);
     height: 60vh;
     margin: 25px;
-    max-height: 400px;
+    max-height: 800px;
     width: 90%;
 }
 
@@ -553,7 +528,7 @@ ul {
     box-shadow: var(--navy-box-shadow);
     height: 60vh;
     margin: 25px;
-    max-height: 400px;
+    max-height: 800px;
     width: 90%;
 }
 
@@ -593,9 +568,6 @@ ul {
     #description {
         font-size: var(--fz-sm);
         margin-bottom: 15px;
-    }
-    #email-btn {
-        font-size: var(--fz-sm);
     }
     #navbar{
         display: none;
