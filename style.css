@@ -409,7 +409,7 @@ ul {
 }
 
 
-/* colors for code section */
+/* colors for about section */
 .code-block {
     background-color: var(--matcha-grey);
     border-radius: 10px;
@@ -449,12 +449,7 @@ ul {
     height: 60vh;
     margin: 25px;
     max-height: 800px;
-    width: 90%;
-}
-
-.current-course {
-    color: var(--tertiary);
-    font-weight: 600;
+    width: 50%;
 }
 
 .range {
@@ -462,32 +457,6 @@ ul {
     font-weight: 500;
     margin: 0 0 10px 7.5px;
     padding: 0;
-}
-
-.detail-on-right {
-    font-size: 11px;
-    margin-top: 0;
-    padding: 5px;
-    width: 97.5%;
-}
-
-.detail-on-right div {
-    float: right;
-    padding: 0;
-    margin: 0;
-}
-
-.bullet-point {
-    align-self: flex-start;
-    color: var(--tertiary);
-    height: 12px;
-    margin: 2.5px 7.5px 0 0;
-    width: 12px;
-}
-
-.bullet-point-container {
-    height: 100%;
-    margin: 0;
 }
 
 .school-name {
@@ -504,32 +473,13 @@ ul {
     padding: 7.5% 15%;
 }
 
-#skills {
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    margin: 0 90px 0 50px;
-    width: 90%;
-}
-
-.skills-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.important-link{
-    color: var(--tertiary);
-}
-
 #projectDetails {
     border-radius: 10px;
     box-shadow: var(--navy-box-shadow);
     height: 60vh;
     margin: 25px;
     max-height: 800px;
-    width: 90%;
+    width: 50%;
 }
 
 #projectDetails h3 {
