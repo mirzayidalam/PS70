@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>PS70: Intro to Digital Fabrication</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/customComponents.js"></script>
+</head>
+
+<body>
+    <div id="navbar">
+        <nav>
+            <a class="secondary-colored" href="./about.html"><span class="primary-colored">01. </span>About</a>
+            <a class="secondary-colored" href="./index.html"><span class="primary-colored">02. </span>Home</a>
+            <a class="secondary-colored" href="./finalProject.html"><span class="primary-colored">03. </span>Final Project</a>
+        </nav>
+    </div>
+    <div class="section">
+        <div id="final">
+            <h2><span class="primary-colored">Week 1. </span><span class="secondary-colored">Introduction and Documentation</span></h2>
+            <div class="section-content">
+                <div id="projectDetails">
+                    <div class="vertical-tab">
+                        <button class="verticaltablinks active"
+                            onclick="openTab(event, 'finaltab1', 'vertical')"
+                            style="border-top-left-radius: 10px;">Website</button>
+                        <button class="verticaltablinks"
+                            onclick="openTab(event, 'finaltab2', 'vertical')">Brainstorm</button>
+                    </div>
+                    <div id="finaltab1" class="verticaltabcontent default-focus" style="display: block; opacity: 1; position: relative;">
+                        <h3>This Website <a target="_blank" class="tertiary-colored">watever it is</a></h3>
+                        <h5 class="range">wowowow</h5>
+                        <ul>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                Shtuff
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="finaltab2" class="verticaltabcontent">
+                        <h3>Project Brainstorm<a target="_blank" class="tertiary-colored">somethin else</a></h3>
+                        <h5 class="range">hehehe</h5>
+                        <ul>
+                            <li>
+                                <flower-bullet></flower-bullet>
+                                more shtuff
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
