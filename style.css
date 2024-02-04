@@ -408,6 +408,22 @@ ul {
     object-fit: contain;
 }
 
+#smalljpg {
+    border-radius: 7.5px;
+    box-shadow: var(--navy-box-shadow);
+    max-height: 200px;
+    margin: 10px;
+    object-fit: contain;
+}
+
+#smallerjpg {
+    border-radius: 7.5px;
+    box-shadow: var(--navy-box-shadow);
+    max-height: 150px;
+    margin: 10px;
+    object-fit: contain;
+}
+
 
 /* colors for about section */
 .code-block {
