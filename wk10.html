@@ -1,5 +1,9 @@
 <html>
 <head>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <title>PS70: Intro to Digital Fabrication</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,6 +31,8 @@
                             style="border-top-left-radius: 10px;">Drawing Machine</button>
                         <button class="verticaltablinks"
                             onclick="openTab(event, 'finaltab2', 'vertical')">Video</button>
+                        <button class="verticaltablinks"
+                            onclick="openTab(event, 'finaltab3', 'vertical')">Code</button>
                     </div>
                     <div id="finaltab1" class="verticaltabcontent default-focus" style="display: block; opacity: 1; position: relative;">
                         <h3>Group project: Drawing Machine (Aurora, Ben, PhannyPacc, Xavier)</h3>
@@ -49,10 +55,189 @@
                         <h5 class="range" style="text-align:center"><video id="headshot" controls autoplay muted><source src="wk10media/drawingMachine5.mp4" type="video/mp4"></video><img src="wk10media/drawingMachine14.jpg" alt="insides of top and bottom gantry" id="headshot"><img src="wk10media/drawingMachine15.jpg" alt="before gantry re-assembly, after fixing pulley belts" id="headshot"></h5>
                         <h5 class="range">Unfortunately, the 3D printed parts are not super strong, so in an attempt to fix the pulley belts, we broke the gantry parts and had to last minute reprint them (which was quite unfortunate because the print times are suuuuuper long).</h5>
                         <h5 class="range" style="text-align:center"><img src="wk10media/drawingMachine16.png" alt="gantry broke :(" id="headshot"></h5>
+                        <h5 class="range">Once the parts finished printing, we were able to put everything back together and attach a pen (ended up using some tape to make it more stable). Before drawing a circle, we got the drawing machine to draw a square. This code used equivalent accelerations for both the x and y axis drawing, which creates straight lines.</h5>
+                        <h5 class="range" style="text-align:center"><video id="headshot" controls autoplay muted><source src="wk10media/drawingMachineSquare.mp4" type="video/mp4"></video></h5>
+                        <h5 class="range">To get the machine to draw curved lines, we had to change the code so that the accelerations and max speeds for the x and y axes were different. Bobby helped us figure this out, and we ended up with a "circle" (kinda...mix between circle and square).</h5>
+                        <h5 class="range" style="text-align:center"><img src="wk10media/drawingCircle4.jpg" alt="test circles" id="smalljpg"><img src="wk10media/drawingCircle3.jpg" alt="test circles" id="smalljpg"><img src="wk10media/drawingCircle2.jpg" alt="test circles" id="smalljpg"><img src="wk10media/drawingCircle1.jpg" alt="test circles" id="smalljpg"></h5>
                     </div>
                     <div id="finaltab2" class="verticaltabcontent">
-                        <h3>Best video of machine at this point...</h3>
-                        <video style="max-width:100%; height:auto; margin: 10px"controls autoplay muted><source src="wk10media/drawingMachine5.mp4" type="video/mp4"></video>
+                        <h3>Best videos of machine at this point...</h3>
+                        <video style="max-width:100%; height:auto; margin: 10px"controls autoplay muted><source src="wk10media/drawingMachineCircleish1.mp4" type="video/mp4"></video>
+                        <video style="max-width:100%; height:auto; margin: 10px"controls autoplay muted><source src="wk10media/drawingMachineCircleish2.mp4" type="video/mp4"></video>
+                    </div>
+                    <div id="finaltab3" class="verticaltabcontent">
+                        <h3>Arduino Code</h3>
+                        <h5 class="range">#include <AccelStepper.h>
+#include &It;Servo.h&gt;
+
+
+// Define stepper motor connections and steps per revolution
+#define stepsPerRevolution 200
+int up_angle = 130;
+int down_angle = 180;
+
+
+// Create a new AccelStepper object
+AccelStepper stepper_xaxis(AccelStepper::DRIVER, 10, 9);
+AccelStepper stepper_yaxis(AccelStepper::DRIVER, 13, 12);
+
+
+Servo myservo;  // create servo object to control a servo
+
+// float speed_x = abs(sin(millis()/1000));
+// float speed_y = abs(cos(millis()/1000));
+
+void setup() {
+  // Set maximum speed and acceleration
+  stepper_xaxis.setMaxSpeed(400);
+  stepper_xaxis.setAcceleration(40);
+  stepper_yaxis.setMaxSpeed(400);
+  stepper_yaxis.setAcceleration(20);
+
+
+  myservo.attach(2);  // attaches the servo on pin 9 to the servo object
+  myservo.write(up_angle);
+}
+
+
+void loop() {
+
+
+  myservo.write(down_angle);
+
+
+  // PHASE 1
+  stepper_xaxis.moveTo(1.5*stepsPerRevolution);
+  stepper_yaxis.moveTo(1.5*stepsPerRevolution);
+  while(stepper_xaxis.distanceToGo() != 0 || stepper_yaxis.distanceToGo() != 0) {
+    
+    if(stepper_xaxis.distanceToGo() != 0) {
+      stepper_xaxis.run();
+    }
+    if(stepper_yaxis.distanceToGo() != 0) {
+      stepper_yaxis.run();
+    }
+  }
+
+  // switch acceleration to curve in other direction
+  if(stepper_xaxis.acceleration() == 20){
+    stepper_xaxis.setAcceleration(40);
+    stepper_yaxis.setAcceleration(20);
+  }
+  else{
+    stepper_yaxis.setAcceleration(40);
+    stepper_xaxis.setAcceleration(20);
+  }
+  stepper_xaxis.setCurrentPosition(0);
+  stepper_yaxis.setCurrentPosition(0);
+
+
+  myservo.write(up_angle);
+
+
+  delay(1000);
+
+
+  myservo.write(down_angle);
+
+
+  // PHASE 2
+  stepper_xaxis.moveTo(-1.5*stepsPerRevolution);
+  stepper_yaxis.moveTo(1.5*stepsPerRevolution);
+  while(stepper_xaxis.distanceToGo() != 0 || stepper_yaxis.distanceToGo() != 0) {
+    if(stepper_xaxis.distanceToGo() != 0) {
+      stepper_xaxis.run();
+    }
+    if(stepper_yaxis.distanceToGo() != 0) {
+      stepper_yaxis.run();
+    }
+  }
+
+  // switch acceleration to curve in other direction
+  if(stepper_xaxis.acceleration() == 20){
+    stepper_xaxis.setAcceleration(40);
+    stepper_yaxis.setAcceleration(20);
+  }
+  else{
+    stepper_yaxis.setAcceleration(40);
+    stepper_xaxis.setAcceleration(20);
+  }
+  stepper_xaxis.setCurrentPosition(0);
+  stepper_yaxis.setCurrentPosition(0);
+  
+  myservo.write(up_angle);
+
+
+  delay(1000);
+
+
+  myservo.write(down_angle);
+
+
+  // PHASE 3
+  stepper_xaxis.moveTo(-1.5*stepsPerRevolution);
+  stepper_yaxis.moveTo(-1.5*stepsPerRevolution);
+  while(stepper_xaxis.distanceToGo() != 0 || stepper_yaxis.distanceToGo() != 0) {
+    if(stepper_xaxis.distanceToGo() != 0) {
+      stepper_xaxis.run();
+    }
+    if(stepper_yaxis.distanceToGo() != 0) {
+      stepper_yaxis.run();
+    }
+  }
+
+  // switch acceleration to curve in other direction
+  if(stepper_xaxis.acceleration() == 20){
+    stepper_xaxis.setAcceleration(40);
+    stepper_yaxis.setAcceleration(20);
+  }
+  else{
+    stepper_yaxis.setAcceleration(40);
+    stepper_xaxis.setAcceleration(20);
+  }
+  stepper_xaxis.setCurrentPosition(0);
+  stepper_yaxis.setCurrentPosition(0);
+
+
+  myservo.write(up_angle);
+
+
+  delay(1000);
+
+
+  myservo.write(down_angle);
+
+
+  // PHASE 4
+  stepper_xaxis.moveTo(1.5*stepsPerRevolution);
+  stepper_yaxis.moveTo(-1.5*stepsPerRevolution);
+  while(stepper_xaxis.distanceToGo() != 0 || stepper_yaxis.distanceToGo() != 0) {
+    if(stepper_xaxis.distanceToGo() != 0) {
+      stepper_xaxis.run();
+    }
+    if(stepper_yaxis.distanceToGo() != 0) {
+      stepper_yaxis.run();
+    }
+  }
+
+  // switch acceleration to curve in other direction
+  if(stepper_xaxis.acceleration() == 20){
+    stepper_xaxis.setAcceleration(40);
+    stepper_yaxis.setAcceleration(20);
+  }
+  else{
+    stepper_yaxis.setAcceleration(40);
+    stepper_xaxis.setAcceleration(20);
+  }
+  stepper_xaxis.setCurrentPosition(0);
+  stepper_yaxis.setCurrentPosition(0);
+
+
+  myservo.write(up_angle);
+
+
+  delay(1000);
+}</h5>
                     </div>
                 </div>
             </div>
