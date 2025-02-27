@@ -57,75 +57,51 @@
                     </div>
                     <div id="finaltab2" class="verticaltabcontent">
                         <h3>Circuit Diagram</h3>
-                        <h5 class="range">(hand-drawn on Notability ipad app using random generic images of breadboard, arduino, and servo motor from google)<img src="wk4media/arduinoCircuit.jpg" alt="circuit diagram"  style="max-width:100%; height:auto; margin: 10px"></h5>
+                        <h5 class="range">(hand-drawn)<img src="wk4media/Kinetic_circuit.jpeg" alt="circuit diagram"  style="max-width:100%; height:auto; margin: 10px"></h5>
                     </div>
                     <div id="finaltab3" class="verticaltabcontent">
                         <h3>Arduino Project Code</h3>
-                        <h5 class="range"> (I used the instructions on the PS70 site to display my arduino code here:)
+                        <h5 class="range"> (I used the instructions on the PS70 site to display my arduino code here.
                             <pre>
                                 <code class="language-arduino">
-#include &#60Servo.h&#62
-
-Servo myservo;  // create servo object to control a servo
-
-int servoPin = 2;
-int ledPinR = 8;
-int ledPinG = 13;
-int switchPin = 6;
-
-int ledStateR = LOW;
-int ledStateG = HIGH;
-int switchState = 0;
-
-unsigned long lastUpdate;
-long interval = 150; // variable for servo speed
+const int stepPin = 18;
+const int dirPin = 19;
 
 void setup() {
-  Serial.begin(9600);
-  myservo.attach(servoPin);  // attaches the servo on pin 2 to the servo object
-  pinMode(ledPinR, OUTPUT); // set red LED pin as output
-  pinMode(ledPinG, OUTPUT); // set green LED pin as output
-  pinMode(switchPin, INPUT_PULLUP); // set switch pin as input pullup
+  pinMode(dirPin, OUTPUT);
+  pinMode(stepPin, OUTPUT);
+  
 }
 
 void loop() {
-  // update status of switch
-  switchState = digitalRead(switchPin);
-  Serial.println(switchState);
+  digitalWrite(dirPin,HIGH);
+  for (int i =0; i < 10000; i++)
+  {
+    digitalWrite(stepPin, HIGH);
+    delay(1);
+    digitalWrite(stepPin, LOW);
+    delay(1);
+  }
+  digitalWrite(dirPin,LOW);
+  for (int i =0; i < 10; i++)
+  {
+    digitalWrite(stepPin, HIGH);
+    delay(1);
+    digitalWrite(stepPin, LOW);
+    delay(1);
+  }
 
-  // check status of switch
-  if(switchState == 1)
-  {
-    digitalWrite(ledPinR, HIGH);
-    digitalWrite(ledPinG, LOW);
-    // moveToOne(servoPos);
-    moveServo(180);
-  }
-  else
-  {
-    digitalWrite(ledPinR, LOW);
-    digitalWrite(ledPinG, HIGH);
-    // moveToZero(servoPos);
-    moveServo(10);
-  }
 }
 
-
-// move servo position
-void moveServo(int position) {
-  if((millis() - lastUpdate) > interval)
-  {
-    lastUpdate = millis(); // updates previousMillis to be current time
-    myservo.write(position);    // tell servo to go to position in variable 'pos'
-  }
-}
                                 </code>
                             </pre>
                         </h5>
                     </div>
                     <div id="finaltab4" class="verticaltabcontent">
                         <h3>Final Video!</h3>
-                        <h5 class="range"><video style="max-width:100%; height:auto; margin: 10px"controls autoplay muted><source src="wk4media/arduinoFinal.mp4" type="video/mp4"></video></h5>
+                        <h5 class="range"><video style="max-width:100%; height:auto; margin: 10px"controls autoplay muted><source src="wk4media/Kinetic_vid1.mp4" type="video/mp4"></video></h5>
+                        <h5 class="range"><video style="max-width:100%; height:auto; margin: 10px"controls autoplay muted><source src="wk4media/Kinetic_vid2.mp4" type="video/mp4"></video></h5>
+
                     </div>
                 </div>
             </div>
