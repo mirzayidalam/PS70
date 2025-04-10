@@ -24,10 +24,38 @@
                     <div class="vertical-tab">
                         <button class="verticaltablinks active"
                             onclick="openTab(event, 'finaltab1', 'vertical')"
-                            style="border-top-left-radius: 10px;">Partner Project</button>
+                            style="border-top-left-radius: 10px;">Partner project</button>
+                        <button class="verticaltablinks active"
+                            onclick="openTab(event, 'finaltab2', 'vertical')"
+                            style="border-top-left-radius: 10px;">Drawing App</button>
+                        <button class="verticaltablinks active"
+                            onclick="openTab(event, 'finaltab3', 'vertical')"
+                            style="border-top-left-radius: 10px;">ESP Code</button>
                     </div>
                     <div id="finaltab1" class="verticaltabcontent default-focus" style="display: block; opacity: 1; position: relative;">
                         <h3>Partner networking project</h3>
+                        <h5 class="range"><video style="max-width:100%; height:auto; margin: 10px"controls autoplay muted><source src="wk9media/IoT_1.mp4" type="video/mp4"></video></h5>
+
+                        <h5 class="range">Worked with Ty this week. Our goal was to be able to create a virtual whiteboard that would convert to g-code and then, real-time, recreates it on paper. We looked at using websockets to do this.</h5>
+                        <h5 class="range">The provided drawing-app.tsx file <a href="IoT_2.zip">(download here)</a> is a comprehensive React component for a browser-based drawing application that supports both freehand sketching and shape drawing, along with features to export the result as G-code or SVG. The app leverages several tools and components from shadcn/ui and lucide-react libraries, and uses React state and refs extensively to manage drawing behavior and interface responsiveness. It also integrates a WebSocket connection to an ESP32-based plotter, enabling real-time plotting of pen tool strokes. </h5>
+                        <h5 class="range">At the app's core is a canvas element, managed via a canvasRef, where all drawing actions occur. Users can draw using a pen, eraser, or geometric shapes (line, rectangle, circle, triangle), with different behaviors for each tool. The triangle tool, notably, requires three separate clicks to complete a shape. Mouse and touch events (onMouseDown, onMouseMove, etc.) capture interactions, and functions like handleStart, handleMove, and handleEnd control the actual drawing logic. For shapes, a temporary canvas previews the outline before finalizing it. </h5>
+                        <h5 class="range">The application supports undo/redo functionality by saving canvas states as image data, which are stored in history and future stacks. Drawings are recorded in a pathData array, which allows exporting the work either as SVG or G-code. The G-code output includes configurable commands for pen-up/down, feed rate, and travel speed—making it compatible with typical plotter hardware. A settings panel lets users change these parameters, as well as view debug info. </h5>
+                        <h5 class="range">The WebSocket integration enables sending pen strokes to a connected ESP32 plotter in real-time. The connection status and plotter parameters (IP, port, paper size) are configurable, and users can send manual commands like “Home,” “Pen Up,” and “Pen Down.” Additional features include saving and loading drawings via localStorage, clearing the canvas, and a tab-based UI for navigating between drawing tools, settings, and plotter controls. </h5>
+
+
+
+                        <h5><a href="https://laurenc8.github.io/ps70/09_networking/index.html" target="_blank"><button type="button" class="primary-button" id="email-btn">Lauren's Website!!!</button>
+                            </a></h5>
+                    </div>
+                    <div id="finaltab2" class="verticaltabcontent default-focus" style="display: block; opacity: 1; position: relative;">
+                        <h3>Drawing App</h3>
+                        <h5 class="range">This app was 98% Vercel 2% human tweaking. The program runs locally. We couldn't get the websocket to work with browser side connection because we would have had to add SSL / authentication to the ESP side of the websocket to pass snuff with the vercel-deployed HTTPS protocol. That, plus the Chrome firewall, made it a bit annoying to connect. The eventual solution was to run it locally and use Firefox for internet connection, since it does not have that firewall. </h5>
+                        <h5 class="range">Using LLMs to develop the front end was an interesting process. We had to learn how to debug and troubleshoot--which was partially solved with AI as well. At the same time, we had to use a critical eye to understand certain errors. For example, the AI hallucinated a button that would accept an IP address, but only visually--the back-end had a static value that was not updateable. Fixing this required opening up the hood manually.</h5>
+                        <h5 class="range"><a href="https://v0-new-project-xs1mn14hurm.vercel.app/">Link</a>
+                        <h5 class="range"><embed src="https://v0-new-project-xs1mn14hurm.vercel.app/"></h5>
+                    </div>
+                    <div id="finaltab3" class="verticaltabcontent default-focus" style="display: block; opacity: 1; position: relative;">
+                        <h3>ESP Code</h3>
                         <h5 class="range">Yayyyyyy my partner for this project was Lauren Chen and she is super cool and awesome and our documentation is on her website</h5>
                         <h5><a href="https://laurenc8.github.io/ps70/09_networking/index.html" target="_blank"><button type="button" class="primary-button" id="email-btn">Lauren's Website!!!</button>
                             </a></h5>
