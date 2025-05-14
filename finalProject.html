@@ -32,8 +32,6 @@
                         <button class="verticaltablinks"
                             onclick="openTab(event, 'finaltab2', 'vertical')">Earlier Weeks</button>
                         <button class="verticaltablinks"
-                            onclick="openTab(event, 'finaltab3', 'vertical')">Week 11</button>
-                        <button class="verticaltablinks"
                             onclick="openTab(event, 'finaltab4', 'vertical')">Final Weeks!</button>
                         <button class="verticaltablinks"
                             onclick="openTab(event, 'finaltab5', 'vertical')">Code</button>
@@ -44,7 +42,7 @@
                         <h3>Final Project Demo Video!!!</h3>
                         <h5 class="range"><video style="max-width:100%; height:auto; margin: 10px"controls autoplay muted><source src="finalmedia/demoVideo.mp4" type="video/mp4"></video></h5>
                         <h3>Why this project</h3>
-                        <h5 class="range">(also see project brainstorm from week 1) I chose this idea as my final project because I am thinking of becoming an elementary school teacher after college and wanted to create something that was at least semi-related to early education. I also wanted to make something that would be relatively small and compact (just for the aesthetic). Thus, creating a math box game to teach very simple addition and subtraction seemed like a good fit. It was an added plus that I also got to incorporate my toast project from earlier in the semester because yes I am still obsessed with toast :D</h5>
+                        <h5 class="range">See project brainstorm from week 1! TLDR I was inspired by the movie Her and thought this would be a fun thing to have in my apartment to entertain guests. As the demo day demonstrated, people like getting their trackpad doodles onto paper!</h5>
                     </div>
                     <div id="finaltab2" class="verticaltabcontent">
                         <h3>Final Project Progress Checks</h3>
@@ -55,15 +53,6 @@
                             <h5><a href="./wk7.html"><button type="button" class="primary-button" id="email-btn">Minimum Viable Product from Week 7</button>
                             </a></h5>
                         </div>
-                    </div>
-                    <div id="finaltab3" class="verticaltabcontent">
-                        <h3>Week 11: Project Iteration</h3>
-                        <h5 class="range">For this assignment, my main goal was to make a new tile slot and tile to fit in the slot that would fit well enough that the arduino could accurately read the voltage divider inside of the tile. The original tile slot that I created would not quite fit the tile pieces when the flat head screws were fully screwed into the number tile, so the first thing that I did was re-design this part to fit better. However, I had not worked on this project in a while, AND I had not done a good job with making the Fusion design easy to change (everything was parameterized but when I would change the parameter values, some parts wouldn't line up anymore and it got super messy), so I ended up fully redoing the outerbox design in Fusion, which of course took a while (although definitely less time than last time). I made the screw tracks on the outerbox a bit wider and less thick to better fit the screws since the screws go deeper into the tile side holes than I had originally anticipated. I also shifted the hole on the bottom of the number tile to the bottom right corner instead of in the middle of the bottom surface to create some more space and make assembly of each tile easier. Once I got these parts printed, I inserted the pieces of metal that I had from my MVP and again used tape to connect wires to the metal. I put the number 1 voltage divider into the new tile box, and tested these out together.</h5>
-                        <h5 class="range" style="text-align:center"><img src="wk11media/newTile.jpg" alt="new tile and tile slot" id="headshot"></h5>
-                        <h5 class="range">The test actually seemed to work pretty well, as long as the wires kept contact with the pieces of metal. Thus, I decided to print out two more of the outerbox pieces and nine more of the number tiles with lids for the rest of the digits 0-9 (STL files in the tab on the left...). A few of the prints were too wobbly so I had to reprint those ones since the fit of the tile into the tile slot has to be pretty uniform in order for everything to work. After the first round of printing, I assembled the rest of the tiles numbered 1-4 using three flat head screws for each tile (one on the top side surface, one on the left side surface, and one on the bottom surface).</h5>
-                        <h5 class="range" style="text-align:center"><img src="wk11media/tiles1-4.jpg" alt="new tiles 1-4" id="headshot"></h5>
-                        <h5 class="range">Once the rest of the prints finished, I assembled the rest of the tiles (definitely got better at it as I went, since it was pretty slow-going at the beginning...). However, there weren't enough of the M5 flat head screws in the lab, so I ended up changing all of the bottom screws to M5 socket head screws, which have a slightly smaller head diameter and a slightly larger head depth. I decided that my arms were too weak at the moment to try to saw more pieces of metal for the two other tile slots, so I will do that in the very near future once I mentally prepare myself to kill my arm in a few days. I tested the tiles, though, to see if they would fit in the tile slot, and they did (for the most part--a couple were getting a little stuck but I think I just need to tighten the side screws). When I tested them with the Arduino, it still wasn't perfect and the readings were not always working, but I think this has to do with the taped wire connections and switching the the socket head screws, which changed the height of the tile when it is put into the slot, so I am just waiting for more of the flat head screws to ship here so I can switch them all back to the original configuration. Overall, I think I made some good progress from my MVP now that I have one tile per digit and multiple tile slots (minus the important metal parts) printed and have gotten over that 3D printing time obstacle. The next step will be cutting more metal and making more secure wire connections (and hopefully this will increase the accuracy of the arduino readings).</h5>
-                        <h5 class="range" style="text-align:center"><img src="wk11media/allTilesClosed.jpg" alt="new tiles 0-9 and 3 new tile slots" id="headshot"><img src="wk11media/allTilesOpen.jpg" alt="new tiles 0-9 with lids off to show voltage dividers" id="headshot"><img src="wk11media/newTileScrews.jpg" alt="new tile outside with flat head screws on sides and socket head on bottom" id="headshot"></h5>
                     </div>
                     <div id="finaltab4" class="verticaltabcontent">
                         <h3>Weeks 13 & 14: The rest of it...</h3>
@@ -87,197 +76,233 @@
                         <h5 class="range">
                             <pre>
                                 <code class="language-arduino">
-#include &#60Servo.h&#62
+#include <AccelStepper.h>
+#include <ESP32Servo.h>
+#include <math.h>
 
-Servo myservo;  // create servo object to control a servo
+// === Pin Definitions ===
+#define DIR_PIN1 12
+#define STEP_PIN2 26
+#define STEP_PIN1 14
+#define DIR_PIN2 27
+#define PEN_SWITCH_PIN 5
+#define SERVO_PIN 33
+#define Y_AXIS_LIMIT_SWITCH_PIN 18
+#define X_AXIS_LIMIT_SWITCH_PIN 19
 
+#define PEN_UP_ANGLE 90
+#define PEN_DOWN_ANGLE 108
 
-class Number{
-  // Member variables
-  int slotPin;
-  int slotVal;
-  float sensorVal;
-  float lowerBound;
-  float upperBound;
-  int interval = 10;
-  unsigned long prevMillis;
+#define MOTOR_INTERFACE_TYPE 1
 
-  // Constructor
-  public:
-  Number(int pin){
-    slotPin = pin;
-    pinMode(slotPin, INPUT);
-  }
+// === Motion Settings ===
+const int MAX_X = 25000;
+const int MAX_Y = 25000;
+const long MIDDLE_INIT = MAX_X / 2;
+const float DRAWING_SCALE = 20.0; // Try 20x to start
 
-  int Read(){
-    if(millis() - prevMillis > interval){
-      prevMillis = millis();
-      sensorVal = analogRead(slotPin) * 5.0 / 1023.0; //read output from pin and convert to volts
-    
-      // create loop where each iteration checks next number range of output values
-      for(float i=0.0; i<10; i = i + 1.0){
+// === State Flags ===
+bool x_axis_isHome = false;
+bool y_axis_isHome = false;
+bool isSetUp = false;
+bool hasDrawn = false;
 
-        // set boundaries so that each range is 0.5V
-        lowerBound = i * 0.5; 
-        upperBound = (i+1.0) * 0.5;
+// === Pen Switch Debounce ===
+int lastPenSwitchState = HIGH;
+bool penIsDown = false;
 
-        // check if output voltage is within this range
-        if(lowerBound < sensorVal && sensorVal < upperBound){
-          slotVal = i;
-          return slotVal;
-        }
-      }
-    }
-  }
+// === Servo and Motors ===
+Servo servo;
+AccelStepper stepper1(MOTOR_INTERFACE_TYPE, STEP_PIN1, DIR_PIN1); // X-axis
+AccelStepper stepper2(MOTOR_INTERFACE_TYPE, STEP_PIN2, DIR_PIN2); // Y-axis
+// === Cursive-style path for "Hello" ===
+struct Point {
+  long x;
+  long y;
 };
 
-class Operator{
-  // Member variables
-  int slotPin;
-  int slotVal;
-  float sensorVal;
-  float lowerBound;
-  float upperBound;
-  int interval = 10;
-  unsigned long prevMillis;
+float distance(long x1, long x2, long y1, long y2){
 
-  // Constructor
-  public:
-  Operator(int pin){
-    slotPin = pin;
-    pinMode(slotPin, INPUT);
-  }
+  return sqrt(pow(( x1-x2),2) +pow((y1-y2), 2));
+}
 
-  bool Read(){
-    if(millis() - prevMillis > interval){
-      prevMillis = millis();
-      sensorVal = analogRead(slotPin) * 5.0 / 1023.0; //read output from pin and convert to volts
-    
-      // create loop where each iteration checks next number range of output values
-      for(int i=0; i<10; i = i + 1){
-
-        // set boundaries so that each range is 1V
-        lowerBound = i * 0.5; 
-        upperBound = (i+1.0) * 0.5;
-
-        // check if output voltage is within this range
-        if(lowerBound < sensorVal && sensorVal < upperBound){
-          slotVal = i;
-
-          if(slotVal < 5){
-            // corresponds to plus sign
-            return true;
-          }
-          else{
-            // corresponds to minus sign
-            return false;
-          }
-        }
-      }
+int shortenPath(const Point ogPath[], Point newPath[], int numPoints, int minDist)
+{
+  int currIndex = 1;
+  newPath[0] = ogPath[0];
+  for(int i = 1; i < numPoints; i++)
+  {
+    if (distance(newPath[currIndex - 1].x, ogPath[i].x,newPath[currIndex - 1].y, ogPath[i].y) >= minDist){
+      newPath[currIndex] = ogPath[i];
+      currIndex++;
     }
   }
-};
+  return currIndex;
+} 
 
-Number num1(A0);
-Operator op(A1);
-Number num2(A2);
-Number num3(A3);
 
-int numVal1;
-int numVal2;
-int numVal3;
-bool plusMinus = false;
-bool check = false;
+Point finalPath[1500];
 
-int servoPin = 2;
-unsigned long lastUpdate;
-unsigned long prevMillis;
-long interval = 150; // variable for servo speed
-long checkInterval = 1000; // variable for time between checking values
+const Point helloPath[] = { //ADD INPUT ARRAY HERE
+      };
+
+int numPoints = sizeof(helloPath) / sizeof(helloPath[0]);
+
+void drawWord() {
+  // Move to first point with pen up
+  long startX = MIDDLE_INIT + finalPath[0].x * DRAWING_SCALE;
+  long startY = -MIDDLE_INIT + finalPath[0].y * DRAWING_SCALE;
+  servo.write(PEN_UP_ANGLE);
+  stepper1.moveTo(startX);
+  stepper2.moveTo(startY);
+  while (stepper1.distanceToGo() != 0 || stepper2.distanceToGo() != 0) {
+    stepper1.run();
+    stepper2.run();
+  }
+  delay(100);
+
+  // Pen down
+  servo.write(PEN_DOWN_ANGLE);
+  delay(100);
+
+  // Draw scaled path
+  for (int i = 1; i < numPoints; i++) {
+    long x = MIDDLE_INIT + finalPath[i].x * DRAWING_SCALE;
+    long y = -MIDDLE_INIT + finalPath[i].y * DRAWING_SCALE;
+
+    stepper1.moveTo(x);
+    stepper2.moveTo(y);
+    while (stepper1.distanceToGo() != 0 || stepper2.distanceToGo() != 0) {
+      stepper1.run();
+      stepper2.run();
+    }
+    delay(10);
+  }
+
+  servo.write(PEN_UP_ANGLE);
+  delay(100);
+}
 
 void setup() {
-  Serial.begin(9600);
-  myservo.attach(servoPin);  // attaches the servo on pin 2 to the servo object
+  Serial.begin(115200);
+  while(!Serial){
+    delay(1);
+  }
+  numPoints = shortenPath(helloPath, finalPath, sizeof(helloPath)/ sizeof(Point), 4);
+  Serial.println("Distance");
+  Serial.println(distance(149, 148, 163, 163));
+  Serial.println(numPoints);
+  for(int i = 0; i < numPoints; i++){
+    Serial.print("x: ");
+    Serial.print(finalPath[i].x);
+    Serial.print(" y: ");
+    Serial.println(finalPath[i].y);
+  }
+  
+  pinMode(PEN_SWITCH_PIN, INPUT_PULLUP);
+  pinMode(X_AXIS_LIMIT_SWITCH_PIN, INPUT_PULLUP);
+  pinMode(Y_AXIS_LIMIT_SWITCH_PIN, INPUT_PULLUP);
+
+  ESP32PWM::allocateTimer(0);
+  ESP32PWM::allocateTimer(1);
+  ESP32PWM::allocateTimer(2);
+  ESP32PWM::allocateTimer(3);
+  servo.setPeriodHertz(50);
+  servo.attach(SERVO_PIN, 500, 2400);
+  servo.write(PEN_UP_ANGLE);  // Start with pen up
+
+  stepper1.setMaxSpeed(16000);
+  stepper1.setAcceleration(3000);
+  stepper2.setMaxSpeed(10000);
+  stepper2.setAcceleration(3000);
+  stepper1.setCurrentPosition(0);
+  stepper2.setCurrentPosition(0);
 }
 
 void loop() {
-  numVal1 = num1.Read();
-  Serial.print(numVal1);
-
-  plusMinus = op.Read();
-  if(plusMinus == true){
-    Serial.print(" + ");
-  }
-  else{
-    Serial.print(" - ");
-  }
-
-  numVal2 = num2.Read();
-  Serial.print(numVal2);
-
-  Serial.print(" = ");
-
-  numVal3 = num3.Read();
-  Serial.println(numVal3);
-
-  // check if equation is correct
-  if(plusMinus == true){
-    if(numVal1 + numVal2 == numVal3){
-      check = true;
+  // === Pen Control via Switch ===
+  int pen = digitalRead(PEN_SWITCH_PIN);
+  if (pen != lastPenSwitchState) {
+    if (pen == LOW) {
+      servo.write(PEN_DOWN_ANGLE);
+      Serial.println("Pen DOWN");
+      penIsDown = true;
+    } else {
+      servo.write(PEN_UP_ANGLE);
+      Serial.println("Pen UP");
+      penIsDown = false;
     }
-    else{
-      check = false;
-    }
-  }
-  else{
-    if(numVal1 - numVal2 == numVal3){
-      check = true;
-    }
-    else{
-      check = false;
-    }
+    lastPenSwitchState = pen;
   }
 
-  // see if should move servo
-  if(millis() - prevMillis > checkInterval){
-
-    // move servo based on check variable
-    if(check == true)
-    {
-      Serial.println("correct");
-      moveServo(180);
-    }
-    else
-    {
-      Serial.println("incorrect");
-      moveServo(10);
+  // === Homing Sequence ===
+  if (!y_axis_isHome || !x_axis_isHome) {
+    if (!y_axis_isHome) {
+      if (digitalRead(Y_AXIS_LIMIT_SWITCH_PIN) == LOW) {
+        Serial.println("Y Home!");
+        stepper2.move(-10);
+        stepper2.setCurrentPosition(0);
+        y_axis_isHome = true;
+      } else {
+        Serial.println("Y not triggered.");
+        stepper2.move(400);
+        stepper2.runToPosition();
+      }
+    } else if (!x_axis_isHome) {
+      if (digitalRead(X_AXIS_LIMIT_SWITCH_PIN) == LOW) {
+        Serial.println("X Home!");
+        stepper1.move(10);
+        stepper1.setCurrentPosition(0);
+        x_axis_isHome = true;
+      } else {
+        Serial.println("X not triggered.");
+        stepper1.move(-400);
+        stepper1.runToPosition();
+      }
     }
   }
+
+  // === Center Then Draw Word ===
+  else if (!isSetUp) {
+    stepper1.moveTo(MIDDLE_INIT);
+    stepper2.moveTo(-MIDDLE_INIT);
+    stepper1.runToPosition();
+    stepper2.runToPosition();
+    isSetUp = true;
+  }
+
+  else if (!hasDrawn) {
+    drawWord();
+    hasDrawn = true;
+  }
+
+  // === OPTIONAL: Circle Logic (Disabled) ===
+  /*
+  else {
+    static float theta = 0.0;
+    static float radius = 5000;
+    static float stepSize = 0.02;
+
+    long x = MIDDLE_INIT + radius * cos(theta) * 1.25;  // Stretch X slightly
+    long y = -MIDDLE_INIT + radius * sin(theta);
+
+    stepper1.moveTo(x);
+    stepper2.moveTo(y);
+
+    stepper1.runToPosition();
+    stepper2.runToPosition();
+
+    theta += stepSize;
+    if (theta >= 2 * PI) {
+      theta = 0.0;
+    }
+  }
+  */
 }
-
-// move servo position
-void moveServo(int position) {
-  if((millis() - lastUpdate) > interval)
-  {
-    lastUpdate = millis(); // updates previousMillis to be current time
-    myservo.write(position); // tell servo to go to position in variable 'pos'
-  }
-}
-                                    
-                                </code>
-                            </pre>
-                        </h5>
-                    </div>
+  </numPoints> </numPoints> </numPoints> </math.h> </ESP32Servo.h> </AccelStepper.h> </code>
                     <div id="finaltab6" class="verticaltabcontent">
                         <h3>STL Files</h3>
-                        <h5 class="range">stl file for number tile lid <a download href="./wk11media/tileLidsSTL/tileLid0.stl" class="tertiary-colored">for 0</a>, <a download href="./wk11media/tileLidsSTL/tileLid1.stl" class="tertiary-colored">for 1</a>, <a download href="./wk11media/tileLidsSTL/tileLid2.stl" class="tertiary-colored">for 2</a>, <a download href="./wk11media/tileLidsSTL/tileLid3.stl" class="tertiary-colored">for 3</a>, <a download href="./wk11media/tileLidsSTL/tileLid4.stl" class="tertiary-colored">for 4</a>, <a download href="./wk11media/tileLidsSTL/tileLid5.stl" class="tertiary-colored">for 5</a>, <a download href="./wk11media/tileLidsSTL/tileLid6.stl" class="tertiary-colored">for 6</a>, <a download href="./wk11media/tileLidsSTL/tileLid7.stl" class="tertiary-colored">for 7</a>, <a download href="./wk11media/tileLidsSTL/tileLid8.stl" class="tertiary-colored">for 8</a>, and <a download href="./wk11media/tileLidsSTL/tileLid9.stl" class="tertiary-colored">for 9</a></h5>
-                        <h5 class="range">stl file for operation tile lid <a download href="./finalmedia/finalProjectFiles/tileLid+.stl" class="tertiary-colored">for + sign</a> and <a download href="./finalmedia/finalProjectFiles/tileLid-.stl" class="tertiary-colored">for - sign</a>.</h5>
-                        <h5 class="range">stl file for number tile <a download href="./wk11media/tileBottom.stl" class="tertiary-colored">bottom</a></h5>
-                        <h5 class="range">stl file for number tile <a download href="./wk11media/outerboxShifted.stl" class="tertiary-colored">slot</a></h5>
-                        <h5 class="range">stl file for toast <a download href="./finalmedia/finalProjectFiles/toastPole.stl" class="tertiary-colored">pole</a></h5>
-                        <h3>DXF Files</h3>
-                        <h5 class="range">dxf file for math box <a download href="./finalmedia/finalProjectFiles/boxLidTop.dxf" class="tertiary-colored">lid top layer</a>, <a download href="./finalmedia/finalProjectFiles/boxLidBottom.dxf" class="tertiary-colored">lid bottom layer</a>, and <a download href="./finalmedia/finalProjectFiles/boxBottom.dxf" class="tertiary-colored">bottom</a> (and the <a download href="./finalmedia/finalProjectFiles/hole.dxf" class="tertiary-colored">hole</a> for the arduino).</h5>
-                        <h5 class="range">dxf file for toast <a download href="./finalmedia/finalProjectFiles/toastBox.dxf" class="tertiary-colored">box</a>, <a download href="./finalmedia/finalProjectFiles/toastFaces.dxf" class="tertiary-colored">faces</a>, and <a download href="./finalmedia/finalProjectFiles/toastSupports.dxf" class="tertiary-colored">motor supports</a> from week 4 assignment.</h5>
+                        <h5 class="range">stl files   <a target="_blank" href="https://a360.co/4jNwTg2/" class="tertiary-colored">here</a> and  <a target="_blank" href="https://a360.co/44D2jB3" class="tertiary-colored">here</a> </h5>
                     </div>
                 </div>
             </div>
